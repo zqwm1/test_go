@@ -13,12 +13,12 @@ func Test(w http.ResponseWriter, r *http.Request) {
 
 	//var buf bytes.Buffer
 	//cmd.Stdin = &buf
-	cmd := exec.Command("ls")
+	cmd := exec.Command("df")
 	out, err := cmd.Output()
 
 	if err != nil {
 		fmt.Printf("Error happened in JSON marshal. Err: %s", err)
 	} else {
-		w.Write(out)
+		w.Write(json.Marshal(out))
 	}
 }
